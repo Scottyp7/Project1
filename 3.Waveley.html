@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>The Happy East</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="MiniProject1.css">
+
+</head>
+<body class="p-3 m-0 border-0 bd-example m-0 border-0" background="homepage.jpeg-DISABLED">
+    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">The Happy East</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="Homepage.html" href="1.Home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="8.Contact.html">Contact</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Select Location
+              </a>
+
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Bondi</a></li>
+                  <li><a class="dropdown-item" href="#">Bondi Junction</a></li>
+                  <li><a class="dropdown-item" href="#">Waveley</a></li>
+                  <li><a class="dropdown-item" href="#">Clovelly</a></li>
+                  <li><a class="dropdown-item" href="#">Coogee</a></li>
+                  <li><a class="dropdown-item" href="#">Randwick</a></li>
+              </ul>
+
+            </li>
+
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div id="heading1">
+      <h3>Waveley Pubs</h3>
+    </div>
+  <div class="container"> 
+    <div class="row">  
+      <div class="col-lg-6">
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://lh3.googleusercontent.com/p/AF1QipPKYRn0rtrWESUbV8Bh13OT2DCJ4KC748g288Qm=s1360-w1360-h1020" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://lh3.googleusercontent.com/p/AF1QipMenAh8xOSHwsemqoxHuaiH-OI9LtGq9ToVk7qo=s1360-w1360-h1020" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://lh3.googleusercontent.com/p/AF1QipOdSejHQTXDJigHAmvKPV0W9EwFHxLGEy89zMj1=s1360-w1360-h1020" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    
+
+    </div>
+      </div>
+        <div class="col-lg-6">
+
+      
+        <div id="news-list"></div>
+        </div>
+    </div>
+  </div>
+  <div class="p-3 m-0 border-0 bd-example m-0 border-0 ">
+    <template id="card-template">
+      <div class="card" style="width: 18rem;">
+            <img class="card-image">
+            <div class="card-title"></div>
+            <p class="card-description"></p>
+            <p class="card-time"></p>
+            <p class="card-rating"></p>
+      </div>
+   </template>
+
+   <div id="card-list" class="row"></div>
+
+  <template id="news-template">
+      <div class="news">
+          <div class="news-body">
+            <div class="news-heading"></div>
+            <div class="news-text"></div>
+            <div class="news-title"></div>
+          </div>
+      </div>
+  </template>
+
+
+  <script>
+      fetch('Reviews.json')
+        .then((response) => response.json())
+        .then((json) => { // json structure
+            reviews(json)
+          })
+
+      function reviews(reviewsArray) {
+          let template;
+          document.getElementById('news-list').innerHTML = "" // makes the template blank
+          for (let i = 0; i < reviewsArray.length; i++) {
+              // news template is called
+              template = 
+                  document.getElementById("news-template")
+                      .content.cloneNode(true);
+              // template is populated with the 3 elements of the arary
+
+              template.querySelector('.news-heading').innerText = 
+                  "Rating (0-5): " + reviewsArray[i].rating;
+              template.querySelector('.news-text').innerText = 
+                reviewsArray[i].content;
+              template.querySelector('.news-title').innerText = 
+                  "Review Date: " + reviewsArray[i].id;              
+              document.querySelector('#news-list')// include the populated template into the page
+                  .appendChild(template);
+
+          }
+      }; 
+
+    fetch('Pubs.json')
+        .then((response) => response.json())
+        .then((json) => { // json structure
+            cards(json)
+            sortingTime(json)
+            sortingRating(json)
+        })
+
+        function cards(dataArray) {
+            let template;
+
+            document.getElementById('card-list').innerHTML = "" // makes the template blank
+            for (let i = 0; i < dataArray.length; i++) {
+                // card template is called
+                template = 
+                    document.getElementById("card-template")
+                        .content.cloneNode(true);
+                // template is populated with the 3 elements of the arary
+                template.querySelector('.card-image').setAttribute('src',dataArray[i].image) 
+
+                template.querySelector('.card-title').innerText = 
+                    dataArray[i].Name;
+                template.querySelector('.card-description').innerText = 
+                    dataArray[i].Description;
+                  template.querySelector('.card-time').innerText = 
+                    "Happy Hour: " +dataArray[i].Time;
+                template.querySelector('.card-rating').innerText = 
+                    "Rating: " + dataArray[i].Rating;
+                
+                document.querySelector('#card-list')// include the populated template into the page
+                    .appendChild(template);
+
+            }
+        }; 
+
+
+</script>
+</body>
+</html>

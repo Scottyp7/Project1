@@ -1,0 +1,103 @@
+#navigation {
+    margin-left: 2%;
+    font-size: x-large;
+    width:22vw;
+    min-width: 5%;
+    border: solid black 2px;
+    border-radius: 10px;
+}
+
+body {
+    background-color: rgb(243, 232, 211);
+}
+
+
+#bottomL{
+    border: solid black 1px;
+    display: inline-block;
+    width:100%;
+}
+
+.card-image{
+    height: 70%;
+    
+}
+
+.card {
+    height: 400px;
+    margin-right: 0.75vw;
+    margin-bottom: 1vw;
+}
+
+.contactForm{
+display: flex;
+justify-content: center;
+}
+
+.btn {
+    width: 15vw;
+    border-radius: 6px;
+    border: dotted dodgerblue 1px;
+}
+.input-group{
+    margin-top: 2vw;
+}
+h6{
+    margin-top: 1vw;
+}
+
+#subBut{
+    margin-left: 0.25vw;
+}
+
+#subBut2{
+    margin-top: 1vw;
+}
+.card, .collapse, .col, .row{
+    overflow:scroll
+}
+
+.carousel{
+
+    display: flex;
+    margin-top: 1vw;
+    margin-right: 0.5vw;
+    position: relative;
+    float: left;
+    border-radius: 10px;
+    width: 48vw;
+}
+
+#heading1{
+    margin-top: 1vw;
+    display: flex;
+    justify-content: center;
+    font-family: serif;
+    font-weight: 550;
+    animation: bounceIn 2s;
+
+}
+
+#news-list {
+    border: solid black 1px;
+    justify-content: space-evenly;
+
+    margin-left: 5vw;
+    position: relative;
+    columns: 3;
+    column-gap: 1vw;
+    border-radius: 10px;
+    background-color: rgb(248, 233, 200);
+}
+
+@keyframes bounceIn {
+    0% {
+      transform: scale(0.7);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+  }

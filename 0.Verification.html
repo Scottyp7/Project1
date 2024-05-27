@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification</title>
+</head>
+<body>
+    <style>
+        .form1{ 
+            width: 25%;
+            height: 35%;
+            margin-left: 40%;
+            margin-top: 0;
+            margin-bottom: 0;
+            border: solid black 1px;
+            border-radius: 3px;
+            text-align: center;
+            background-color: rgb(255, 250, 240);
+            background-repeat: no-repeat;
+            border-radius: 10px;
+            overflow: auto;
+        }
+        h1, h3{
+            text-align: center;
+        }   
+        button {
+            text-align: center;
+            margin-top: 15px;
+            width: 70%;
+        }
+        body {
+            background-size: cover;
+            background-position: center top; 
+            background-image: url("https://img.freepik.com/free-photo/fresh-cocktails-with-ice-lemon-lime-fruits-generative-ai_188544-12370.jpg?size=626&ext=jpg&ga=GA1.1.1700460183.1712707200&semt=ais");
+        }
+    </style>
+    <form class="form1">
+        <h1>Welcome</h1>
+        <h3>You must be 18 To Enter This Site</h3>
+        <button onclick="noEntry()">I am under 18 years old</button>
+        <br>
+        <a href="1.Home.html">     
+        <button>I am over 18 years old<br>
+        </a>
+    </form>
+<script>
+    function noEntry() {
+        alert("This site is for people who over the legal age of 18")
+    }
+</script>
+
+
+
+    <!-- End Example Code -->
+  </body>
+</html>
